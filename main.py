@@ -99,19 +99,77 @@ if selected_little_model and selected_big_model:
 
 # CSS to style the dataframe
     custom_css = """
-        <style>
+    <style>
+        /* General body styling */
+        body {
+            color: var(--text-color, #000); /* Default to black text for light mode */
+            background-color: var(--background-color, #fff); /* Default to white background */
+        }
+
+        /* Styling for the dataframe (table) */
+        .dataframe {
+            width: 100% !important;
+            height: auto !important;
+            font-size: 16px !important;
+            color: var(--text-color, #000); /* Text color depends on mode */
+            background-color: var(--table-bg-color, #f8f8f8); /* Light background for tables */
+            border-collapse: collapse;
+        }
+
+        /* Highlight Savings: more contrast for both modes */
+        .highlight_savings {
+            background-color: var(--highlight-savings-bg, #FFD700) !important; /* Gold for light/dark modes */
+            color: var(--highlight-savings-text, #333); /* Dark text on gold for better contrast */
+        }
+
+        /* Highlight Accuracy: color contrast for both modes */
+        .highlight_accuracy {
+            background-color: var(--highlight-accuracy-bg, #32CD32) !important; /* Lime Green */
+            color: var(--highlight-accuracy-text, #FFF); /* White text on lime green */
+        }
+
+        /* Table Headers */
+        .dataframe thead th {
+            background-color: var(--header-bg-color, #f1f1f1); /* Light gray for table headers */
+            color: var(--header-text-color, #333); /* Dark text for headers */
+        }
+
+        /* Borders for table */
+        .dataframe, .dataframe th, .dataframe td {
+            border: 1px solid var(--border-color, #ddd); /* Light gray borders */
+        }
+
+        /* Dark mode detection */
+        @media (prefers-color-scheme: dark) {
+            body {
+                --text-color: #FFF; /* White text for dark mode */
+                --background-color: #222; /* Dark background */
+            }
+
             .dataframe {
-                width: 100% !important;
-                height: auto !important;
-                font-size: 16px !important;
+                --table-bg-color: #333; /* Darker table background for dark mode */
             }
+
             .highlight_savings {
-                background-color: yellow !important;
+                --highlight-savings-bg: #FFD700; /* Gold highlight for dark mode */
+                --highlight-savings-text: #333; /* Dark text */
             }
+
             .highlight_accuracy {
-                background-color: lightgreen !important;
+                --highlight-accuracy-bg: #32CD32; /* LimeGreen for dark mode */
+                --highlight-accuracy-text: #FFF; /* White text on LimeGreen */
             }
-        </style>
+
+            .dataframe thead th {
+                --header-bg-color: #444; /* Darker header background */
+                --header-text-color: #FFF; /* White text in headers */
+            }
+
+            .dataframe, .dataframe th, .dataframe td {
+                --border-color: #444; /* Dark borders for tables */
+            }
+        }
+    </style>
     """
 
     # Apply the custom CSS styling

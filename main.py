@@ -90,8 +90,8 @@ if selected_little_model and selected_big_model:
 ]
     
     #selected_df = selected_df.apply(lambda col: col.round(3) if pd.api.types.is_numeric_dtype(col) else col)
-    #filtered_df = selected_df[selected_df['Little-Big Accuracy'] >= target_acc].iloc[[0]]
-    filtered_df= selected_df.iloc[[close_idx]]
+    filtered_df = selected_df[selected_df['Little-Big Accuracy'] >= target_acc].iloc[[0]]
+    #filtered_df= selected_df.iloc[[close_idx]]
     filtered_df = filtered_df.apply(lambda col: col.round(3) if pd.api.types.is_numeric_dtype(col) else col)
     filtered_df= filtered_df[new_column_order]
   
